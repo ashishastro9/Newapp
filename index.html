@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Response</title>
+
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #e60073;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .button {
+            background-color: #e60073;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #ff1c8f;
+        }
+
+        .response {
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #e60073;
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #backButton {
+            background-color: #ff1c8f;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        #backButton:hover {
+            background-color: #e60073;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Achha achhaa baat gandu baby k liye</h1>
+
+    <div class="content">
+        <p>Click on the button to start:</p>
+        <button class="button" id="startButton">Start</button>
+        
+        <div id="choices" class="hidden">
+            <p>What do you feel for me, my love?</p>
+            <button class="button" id="iLoveYouButton">I Love You</button>
+            <button class="button" id="iMissYouButton">I Miss You</button>
+            <button class="button" id="KissMeButton">Kiss Me</button>
+            <button class="button" id="MyHeartIsYoursButton">My Heart is Yours</button>
+            <button class="button" id="YouCompleteMeButton">You Complete Me</button>
+            <button class="button" id="INeedYouButton">I Need You</button>
+        </div>
+
+        <div id="response" class="response hidden">
+            <!-- Response will appear here -->
+        </div>
+
+        <button id="backButton" class="hidden">Back to Start</button>
+    </div>
+
+    <script>
+        // Get elements by ID
+        const startButton = document.getElementById("startButton");
+        const choicesDiv = document.getElementById("choices");
+        const responseDiv = document.getElementById("response");
+        const backButton = document.getElementById("backButton");
+
+        const loveButtons = {
+            "iLoveYouButton": "I love you bht sara mera bachha ❤️",
+            "iMissYouButton": "I miss you bht jada 🫂💗",
+            "KissMeButton": "gandu baby ko pakad k kissi kr denge bht sara 💋💋💋💋💋",
+            "MyHeartIsYoursButton": "My heart❤️❤️ is always yours, forever and always!",
+            "YouCompleteMeButton": "You complete me, without you I’m nothing!😃",
+            "INeedYouButton": "I need you more mera gandu baby❤️🫂"
+        };
+
+        // Event listener for the start button
+        startButton.addEventListener("click", function() {
+            startButton.classList.add("hidden");
+            choicesDiv.classList.remove("hidden");
+            backButton.classList.remove("hidden");
+        });
+
+        // Event listener for each button dynamically
+        Object.keys(loveButtons).forEach(buttonId => {
+            document.getElementById(buttonId).addEventListener("click", function() {
+                responseDiv.textContent = loveButtons[buttonId];
+                responseDiv.classList.remove("hidden");
+                choicesDiv.classList.add("hidden");
+            });
+        });
+
+        // Event listener for the back button to restart
+        backButton.addEventListener("click", function() {
+            startButton.classList.remove("hidden");
+            choicesDiv.classList.add("hidden");
+            responseDiv.classList.add("hidden");
+            backButton.classList.add("hidden");
+        });
+    </script>
+
+</body>
+</html>
